@@ -122,7 +122,7 @@ const login = async (req, res) => {
 
 //logout function to handle user logout
 const logout = (req, res) => {
-  // Clear the tokens from the client side (e.g., by removing them from cookies)
+  // Clear the tokens from the client side (e.g. by removing them from cookies)
   res.clearCookie("access_token");
   res.clearCookie("refresh_token");
   res.json({ message: "User logged out successfully" });
