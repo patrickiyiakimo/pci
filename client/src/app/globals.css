@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-base: #ffffff;
+  --color-base-v2: #f7f7f7;
+  --color-contrast: #1f1e1e;
+  --color-ink: #000000;
+  --color-accent: #da3750;
+  --color-accent-400: #ee6d80;
+  --color-accent-dark: #c22e45;
+  --color-grey-100: #edecEC;
+  --color-grey-200: #e3e1e1;
+  --color-grey-300: #c7c4c4;
+  --color-grey-500: #827f7f;
+  --color-grey-600: #696767;
+  --color-grey-700: #514f4f;
+  --color-ice: #ffffff;
+  --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Clash Display Variable", "Clash Display", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: #1f1e1e;
+  font-family: "Switzer", ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Clash Display Variable", "Clash Display", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (light) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7f7f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c4c4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #da3750;
+}
+
+::selection {
+  background: #da3750;
+  color: #ffffff;
+}
+
+/* Animated client logo / award marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Subtle grid overlay used over hero video */
+.grid-overlay {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
