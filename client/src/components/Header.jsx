@@ -1,72 +1,69 @@
-import { useState } from "react";
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
 import Logo from "@/components/shared/Logo";
 import Button from "@/components/shared/Button";
+import DesktopMenu from "@/components/header/DesktopMenu";
+import MobileMenu from "@/components/header/MobileMenu";
+import { navItems } from "@/components/header/navItems";
 
-const navItems = [
-  {
-    label: "Services",
-    href: "/services",
-    children: [
-      { label: "AI Development", href: "/services/ai-development" },
-      { label: "App & Software Development", href: "/services/software-development" },
-      { label: "Design", href: "/services/design" },
-      { label: "Product Strategy", href: "/services/product-strategy" },
-    ],
-  },
-  { label: "Work", href: "/work" },
-  {
-    label: "Clients",
-    href: "/clients",
-    children: [
-      { label: "Industries", href: "/clients/industries" },
-      { label: "Use Cases", href: "/clients/use-cases" },
-    ],
-  },
-  {
-    label: "Company",
-    href: "/company",
-    children: [
-      { label: "About Us", href: "/company/about" },
-      { label: "Blog", href: "/company/blog" },
-      { label: "Careers", href: "/company/careers" },
-      { label: "Guides", href: "/company/guides" },
-    ],
-  },
-];
+const LG_BREAKPOINT = 1024;
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [active, setActive] = useState(null);
+  const [expanded, setExpanded] = useState(null);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= LG_BREAKPOINT && mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileOpen]);
+
+  const activeItem = navItems.find((i) => i.label === active && i.children) || null;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-grey-200 bg-white/90 backdrop-blur-md">
+    <header
+      className="sticky top-0 z-50 border-b border-grey-200 bg-white"
+      onMouseLeave={() => setActive(null)}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Logo />
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => (
-            <div key={item.label} className="group relative">
-              <Link
-                href={item.href}
-                className="text-sm font-medium text-grey-700 transition-colors hover:text-contrast"
+            <div key={item.label} className="relative">
+              <button
+                className="group flex items-center gap-1.5 py-2 text-sm font-medium text-grey-700 transition-colors hover:text-contrast"
+                onMouseEnter={() => setActive(item.children ? item.label : null)}
               >
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className="invisible absolute left-0 top-full z-50 pt-4 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="w-64 rounded-2xl border border-grey-200 bg-white p-2 shadow-xl">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        href={child.href}
-                        className="block rounded-xl px-4 py-2.5 text-sm text-grey-600 transition-colors hover:bg-base-v2 hover:text-accent"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
+                <span>{item.label}</span>
+                {item.children && (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    className={`h-3 w-3 transition-transform duration-300 ${
+                      active === item.label ? "rotate-180" : ""
+                    }`}
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                )}
+                <span className="absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+              </button>
             </div>
           ))}
         </nav>
@@ -81,63 +78,35 @@ export default function Header() {
           className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
         >
           <span
-            className={`h-0.5 w-6 bg-contrast transition-transform ${
+            className={`h-0.5 w-6 rounded-full bg-contrast transition-all duration-300 ${
               mobileOpen ? "translate-y-2 rotate-45" : ""
             }`}
           />
           <span
-            className={`h-0.5 w-6 bg-contrast transition-opacity ${
-              mobileOpen ? "opacity-0" : ""
+            className={`h-0.5 w-6 rounded-full bg-contrast opacity-100 transition-all duration-300 ${
+              mobileOpen ? "translate-x-2 opacity-0" : ""
             }`}
           />
           <span
-            className={`h-0.5 w-6 bg-contrast transition-transform ${
+            className={`h-0.5 w-6 rounded-full bg-contrast transition-all duration-300 ${
               mobileOpen ? "-translate-y-2 -rotate-45" : ""
             }`}
           />
         </button>
       </div>
 
-      {mobileOpen && (
-        <nav className="border-t border-grey-200 bg-white px-6 py-4 lg:hidden">
-          {navItems.map((item) => (
-            <div key={item.label} className="border-b border-grey-100 py-2">
-              <Link
-                href={item.href}
-                className="block py-2 text-base font-medium text-contrast hover:text-accent"
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className="pl-4">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.label}
-                      href={child.href}
-                      className="block py-2 text-sm text-grey-600 hover:text-accent"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <Button
-            href="/book-a-call"
-            variant="primary"
-            size="lg"
-            className="mt-4 w-full text-center"
-            onClick={() => setMobileOpen(false)}
-          >
-            Book a call
-          </Button>
-        </nav>
-      )}
+      <DesktopMenu activeItem={activeItem} onClose={() => setActive(null)} />
+
+      <MobileMenu
+        navItems={navItems}
+        mobileOpen={mobileOpen}
+        expanded={expanded}
+        onToggle={(label) => setExpanded(expanded === label ? null : label)}
+        onClose={() => setMobileOpen(false)}
+      />
     </header>
   );
 }
