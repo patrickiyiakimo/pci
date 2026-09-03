@@ -68,7 +68,7 @@ export default function Hero() {
           loop
           playsInline
           preload="metadata"
-          aria-label="PCI Apps showreel"
+          aria-label="PCI showreel"
         />
 
         <div

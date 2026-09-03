@@ -9,9 +9,9 @@ const clients = [
 
 export default function ClientMarquee() {
   return (
-    <section className="border-t border-navy-light bg-navy/95">
+    <section className="border-t border-grey-200 bg-base">
       <div className="mx-auto max-w-7xl px-6 py-8">
-        <p className="text-center text-xs font-medium uppercase tracking-widest text-slate">
+        <p className="text-center text-xs font-medium uppercase tracking-widest text-grey-500">
           Trusted by teams across industries
         </p>
         <div
@@ -21,7 +21,7 @@ export default function ClientMarquee() {
           {[...clients, ...clients].map((client, i) => (
             <span
               key={`${client.name}-${i}`}
-              className="whitespace-nowrap text-xl font-bold tracking-tight text-ice/50"
+              className="whitespace-nowrap text-xl font-bold tracking-tight text-grey-300"
             >
               {client.name}
             </span>

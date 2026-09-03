@@ -33,10 +33,10 @@ const services = [
 
 export default function WhatWeDo() {
   return (
-    <section id="services" className="bg-navy">
+    <section id="services" className="bg-base">
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-          <h2 className="text-3xl font-bold tracking-tight text-ice sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-contrast sm:text-4xl lg:text-5xl">
             What We Do
           </h2>
           <Button href="/services" variant="outline" size="md">
@@ -49,20 +49,20 @@ export default function WhatWeDo() {
             <a
               key={service.title}
               href={service.href}
-              className="group overflow-hidden rounded-2xl border border-navy-light bg-navy-light/20 p-6 transition-colors hover:border-gold/40"
+              className="group overflow-hidden rounded-2xl border border-grey-200 bg-base-v2 p-6 transition-colors hover:border-accent/40"
             >
               <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-bold tracking-tight text-ice sm:text-2xl">
+                <h3 className="text-xl font-bold tracking-tight text-contrast sm:text-2xl">
                   {service.title}
                 </h3>
-                <span className="text-sm font-semibold text-gold">
+                <span className="text-sm font-semibold text-accent">
                   {service.index}
                 </span>
               </div>
-              <p className="mt-4 text-base leading-relaxed text-slate">
+              <p className="mt-4 text-base leading-relaxed text-grey-600">
                 {service.description}
               </p>
-              <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-slate transition-colors group-hover:text-gold">
+              <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-grey-600 transition-colors group-hover:text-accent">
                 Learn More
                 <svg
                   viewBox="0 0 24 24"

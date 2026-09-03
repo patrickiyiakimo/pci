@@ -72,8 +72,8 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Button href="mailto:hello@pciapps.com" variant="dark" size="md">
-            Get Started
+          <Button href="/book-a-call" variant="primary" size="md">
+            Book a call
           </Button>
         </div>
 
@@ -128,13 +128,13 @@ export default function Header() {
             </div>
           ))}
           <Button
-            href="mailto:hello@pciapps.com"
-            variant="dark"
+            href="/book-a-call"
+            variant="primary"
             size="lg"
             className="mt-4 w-full text-center"
             onClick={() => setMobileOpen(false)}
           >
-            Get Started
+            Book a call
           </Button>
         </nav>
       )}

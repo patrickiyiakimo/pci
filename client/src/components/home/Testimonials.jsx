@@ -47,13 +47,13 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="border-t border-navy-light bg-navy-light/10">
+    <section className="border-t border-grey-200 bg-base-v2">
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-ice sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-contrast sm:text-4xl lg:text-5xl">
             What Our Partners Are Saying:
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate">
+          <p className="mt-4 text-base leading-relaxed text-grey-600">
             Rated 5.0 out of 5 from 84 reviews on Clutch.
           </p>
         </div>
@@ -62,9 +62,9 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.author}
-              className="flex flex-col rounded-2xl border border-navy-light bg-navy p-6"
+              className="flex flex-col rounded-2xl border border-grey-200 bg-white p-6"
             >
-              <span className="flex gap-1 text-gold" aria-label="5 star rating">
+              <span className="flex gap-1 text-accent" aria-label="5 star rating">
                 {Array.from({ length: 5 }, (_, i) => (
                   <svg
                     key={i}
@@ -76,12 +76,12 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </span>
-              <blockquote className="mt-4 text-base leading-relaxed text-ice">
+              <blockquote className="mt-4 text-base leading-relaxed text-contrast">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <div className="mt-4 border-t border-navy-light/40 pt-4">
-                <p className="text-sm font-semibold text-ice">{t.author}</p>
-                <p className="text-xs text-slate">{t.role}</p>
+              <div className="mt-4 border-t border-grey-200 pt-4">
+                <p className="text-sm font-semibold text-contrast">{t.author}</p>
+                <p className="text-xs text-grey-500">{t.role}</p>
               </div>
             </div>
           ))}
