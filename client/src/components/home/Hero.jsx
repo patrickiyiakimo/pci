@@ -27,20 +27,20 @@ export default function Hero() {
   return (
     <section className="relative flex flex-col overflow-hidden bg-base min-h-[82svh] lg:min-h-[calc(100svh-68px)] min-[2000px]:min-h-[calc(70svh-68px)]">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center px-6 pt-16 pb-10 text-center lg:pt-[4.5vw] lg:pb-[5vw]">
-        <h1 className="font-heading text-[clamp(2.5rem,6vw,5.75rem)] font-semibold leading-[1.03] tracking-tight text-contrast">
-          A Product Agency That
+        <h1 className="mt-5 font-heading text-[clamp(2.5rem,6vw,5.75rem)] font-semibold leading-[1.03] tracking-tight text-contrast">
+          Strategy Before The Build.
           <br />
-          Thinks Beyond The Build
+          Products That Move The Numbers
           <span className="text-accent">.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-grey-600 sm:text-lg">
-          Your product problem is a business problem wearing a product costume.
-          We work the strategy before the build, so what ships actually moves
-          the number you&apos;re being measured on.
+          Every product problem is a business problem in disguise. We plan the
+          strategy, sweat the craft, and ship the software that moves the
+          metric you&apos;re actually measured on — not just the backlog.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button href="mailto:hello@pciapps.com" variant="primary" size="lg">
-            Tell Us What You&apos;re Building
+            Book a Strategy Call
           </Button>
           <button
             onClick={playReel}
@@ -52,7 +52,7 @@ export default function Hero() {
                 <path d="M8 5v14l11-7z" />
               </svg>
             </span>
-            Play Reel
+            Watch the Reel
           </button>
         </div>
       </div>
