@@ -11,7 +11,11 @@ export const navItems = [
       { label: "Product Strategy", href: "/services/product-strategy" },
     ],
   },
-  { label: "Work", href: "/work", description: "Case studies & shipped products." },
+  { 
+    label: "Work", 
+    href: "/work", 
+    description: "Case studies & shipped products." 
+  },
   {
     label: "Clients",
     href: "/clients",

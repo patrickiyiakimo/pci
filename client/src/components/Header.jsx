@@ -6,6 +6,7 @@ import Button from "@/components/shared/Button";
 import DesktopMenu from "@/components/header/DesktopMenu";
 import MobileMenu from "@/components/header/MobileMenu";
 import { navItems } from "@/components/header/navItems";
+import Link from "next/link";
 
 const LG_BREAKPOINT = 1024;
 
@@ -44,12 +45,12 @@ export default function Header() {
         <nav className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => (
             <div key={item.label} className="relative">
-              <button
-                className="group flex items-center gap-1.5 py-2 text-sm font-medium text-grey-700 transition-colors hover:text-contrast"
-                onMouseEnter={() => setActive(item.children ? item.label : null)}
-              >
-                <span>{item.label}</span>
-                {item.children && (
+              {item.children ? (
+                <button
+                  className="group flex items-center gap-1.5 py-2 text-sm font-medium text-grey-700 transition-colors hover:text-contrast"
+                  onMouseEnter={() => setActive(item.children ? item.label : null)}
+                >
+                  <span>{item.label}</span>
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -61,9 +62,17 @@ export default function Header() {
                   >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
-                )}
-                <span className="absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-              </button>
+                  <span className="absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+                </button>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="group flex items-center gap-1.5 py-2 text-sm font-medium text-grey-700 transition-colors hover:text-contrast"
+                >
+                  <span>{item.label}</span>
+                  <span className="absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+                </Link>
+              )}
             </div>
           ))}
         </nav>
