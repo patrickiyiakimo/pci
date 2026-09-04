@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Button from "@/components/shared/Button";
 
 const caseStudies = [
@@ -9,48 +10,64 @@ const caseStudies = [
     title: "Reimagining a Legacy Radio Station's Mobile App for the Next Generation",
     href: "/work/kcrw",
     domain: "Media & Broadcasting",
+    image:
+      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1200&q=70",
   },
   {
     client: "k-ID",
     title: "The World's First Cross-Platform Solution for Safely Onboarding Children",
     href: "/work/kid",
     domain: "Safety & Compliance",
+    image:
+      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1200&q=70",
   },
   {
     client: "Valara",
     title: "An All-in-One Rental Management SaaS Platform for Fleet Businesses",
     href: "/work/valara",
     domain: "SaaS & Fleet",
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=70",
   },
   {
     client: "Root Insurance",
     title: "Making Insurance Engagement Fun Through Gamification",
     href: "/work/root",
     domain: "InsurTech",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=70",
   },
   {
     client: "Castability",
     title: "Revolutionizing the Actor Training Experience Through an Intuitive Mobile App",
     href: "/work/castability",
     domain: "Entertainment & Training",
+    image:
+      "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&q=70",
   },
   {
     client: "Katzkin Automotive Leather",
     title: "Reinventing an Automotive Interior Retailer's eCommerce Experience",
     href: "/work/katzkin",
     domain: "Automotive & eCommerce",
+    image:
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=70",
   },
   {
     client: "Fitness Pact",
     title: "Driving Fitness Accountability Through Digital Commitment",
     href: "/work/fitness-pact",
     domain: "Health & Wellness",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=70",
   },
   {
     client: "Intterra Group",
     title: "Powering Emergency Response in a Real-Time Mobile Portal",
     href: "/work/intterra",
     domain: "Public Safety",
+    image:
+      "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&w=1200&q=70",
   },
 ];
 
@@ -59,14 +76,13 @@ export default function CaseStudies() {
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
 
-  const itemsPerView = 3;
-  const slideCount = Math.ceil(caseStudies.length / itemsPerView);
+  const slideCount = caseStudies.length;
 
   useEffect(() => {
     if (paused) return;
     timerRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % slideCount);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timerRef.current);
   }, [paused, slideCount]);
 
@@ -97,7 +113,7 @@ export default function CaseStudies() {
             <div className="mt-8 flex items-center gap-4">
               <button
                 onClick={prev}
-                aria-label="Previous case studies"
+                aria-label="Previous case study"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-grey-200 text-contrast transition-colors hover:border-accent hover:text-accent"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
@@ -106,7 +122,7 @@ export default function CaseStudies() {
               </button>
               <button
                 onClick={next}
-                aria-label="Next case studies"
+                aria-label="Next case study"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-grey-200 text-contrast transition-colors hover:border-accent hover:text-accent"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
@@ -124,50 +140,45 @@ export default function CaseStudies() {
             <div className="overflow-hidden">
               <div
                 className="flex transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${index * 100}%)` }}
+                style={{ transform: `translateX(-${index * 70}%)` }}
               >
-                {Array.from({ length: slideCount }, (_, i) => (
-                  <div key={i} className="grid w-full shrink-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 pr-6">
-                    {caseStudies.slice(i * itemsPerView, i * itemsPerView + itemsPerView).map((cs) => (
-                      <a
-                        key={cs.client}
-                        href={cs.href}
-                        className="group flex flex-col overflow-hidden rounded-2xl border border-grey-200 bg-base-v2 transition-colors hover:border-accent/40"
-                      >
-                        <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-grey-100 to-base-v2 p-6">
-                          <span className="text-2xl font-bold tracking-tight text-grey-300 transition-colors group-hover:text-accent">
-                            {cs.client}
-                          </span>
-                        </div>
-                        <div className="flex flex-1 flex-col p-5">
-                          <p className="text-xs font-medium uppercase tracking-wider text-accent">
-                            {cs.domain}
-                          </p>
-                          <h3 className="mt-2 flex-1 text-base font-semibold leading-snug text-contrast">
-                            {cs.title}
-                          </h3>
-                          <span className="mt-3 inline-block text-sm font-medium text-grey-600 transition-colors group-hover:text-accent">
-                            Learn More &rarr;
-                          </span>
-                        </div>
-                      </a>
-                    ))}
+                {caseStudies.map((cs, i) => (
+                  <div
+                    key={cs.client}
+                    className="w-[70%] shrink-0 pr-6 sm:w-[68%] lg:w-[78%]"
+                  >
+                    <a
+                      href={cs.href}
+                      className={`group flex h-full flex-col overflow-hidden rounded-2xl border transition-colors ${
+                        i === index
+                          ? "border-grey-200 bg-base-v2 hover:border-accent/40"
+                          : "border-grey-200/60 bg-base-v2/70 hover:border-accent/30"
+                      }`}
+                    >
+                      <div className="relative aspect-[16/10] overflow-hidden bg-grey-100">
+                        <Image
+                          src={cs.image}
+                          alt={`${cs.client} case study`}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="flex flex-1 flex-col p-6 lg:p-7">
+                        <p className="text-sm font-medium uppercase tracking-wider text-accent">
+                          {cs.domain}
+                        </p>
+                        <h3 className="mt-3 flex-1 font-heading text-xl font-semibold leading-snug text-contrast lg:text-2xl">
+                          {cs.title}
+                        </h3>
+                        <span className="mt-4 inline-block text-base font-medium text-grey-600 transition-colors group-hover:text-accent">
+                          Learn More &rarr;
+                        </span>
+                      </div>
+                    </a>
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="mt-8 flex items-center justify-center gap-2">
-              {Array.from({ length: slideCount }, (_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setIndex(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`h-2 rounded-full transition-all ${
-                    index === i ? "w-6 bg-accent" : "w-2 bg-grey-300"
-                  }`}
-                />
-              ))}
             </div>
           </div>
         </div>
