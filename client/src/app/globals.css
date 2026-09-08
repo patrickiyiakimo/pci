@@ -78,6 +78,10 @@ html {
   animation: marquee 30s linear infinite;
 }
 
+.animate-marquee-reverse {
+  animation: marquee 30s linear infinite reverse;
+}
+
 .grid-overlay {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.06) 1px,

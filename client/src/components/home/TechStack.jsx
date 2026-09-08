@@ -29,14 +29,36 @@ const techItems = [
 ];
 
 export default function TechStack() {
+  const mid = Math.ceil(techItems.length / 2);
+  const firstRow = techItems.slice(0, mid);
+  const secondRow = techItems.slice(mid);
+
+  const renderChip = (tech, i) => (
+    <div
+      key={`${tech.name}-${i}`}
+      className="flex shrink-0 flex-col items-center justify-center gap-3 px-8"
+    >
+      <span className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-md ring-1 ring-black/5">
+        <Image
+          src={tech.logo}
+          alt={`${tech.name} logo`}
+          width={48}
+          height={48}
+          className="h-10 w-10 object-contain"
+        />
+      </span>
+      <span className="text-sm font-medium text-white/70">{tech.name}</span>
+    </div>
+  );
+
   return (
-    <section className="border-y border-grey-200 bg-white">
+    <section className="border-y border-white/10 bg-black md:border-grey-200 md:bg-white">
       <div className="mx-auto max-w-7xl px-6 py-20">
-        <div className="max-w-3xl mx-auto text-center">
-         <h2 className="mt-4 text-3xl font-bold tracking-tight text-contrast sm:text-4xl lg:text-5xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-contrast lg:text-5xl">
             Our Tech Stack
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-grey-600 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-neutral-400 sm:text-lg md:text-grey-600">
             From front-end frameworks to cloud infrastructure, our stack is
             designed to reduce risk, increase confidence, and create products
             that last. These are the tools we use to move fast, stay reliable,
@@ -44,7 +66,19 @@ export default function TechStack() {
           </p>
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-x-16 gap-y-14">
+        <div className="mt-14 flex flex-col gap-10 overflow-hidden md:hidden">
+          <div className="flex w-max animate-marquee items-center hover:[animation-play-state:paused]">
+            {[...firstRow, ...firstRow].map((tech, i) => renderChip(tech, i))}
+          </div>
+          <div
+            className="flex w-max animate-marquee-reverse items-center hover:[animation-play-state:paused]"
+            style={{ animationDuration: "36s" }}
+          >
+            {[...secondRow, ...secondRow].map((tech, i) => renderChip(tech, i))}
+          </div>
+        </div>
+
+        <div className="mt-14 hidden flex-wrap items-center justify-center gap-x-16 gap-y-14 md:flex">
           {techItems.map((tech) => (
             <div
               key={tech.name}

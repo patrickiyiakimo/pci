@@ -71,12 +71,29 @@ const caseStudies = [
   },
 ];
 
+const MOBILE_SLIDE_W = 92;
+const DESKTOP_SLIDE_W = 70;
+const DESKTOP_QUERY = "(min-width: 768px)";
+
 export default function CaseStudies() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia(DESKTOP_QUERY).matches
+      : false
+  );
   const timerRef = useRef(null);
 
   const slideCount = caseStudies.length;
+  const slideWidth = isDesktop ? DESKTOP_SLIDE_W : MOBILE_SLIDE_W;
+
+  useEffect(() => {
+    const mq = window.matchMedia(DESKTOP_QUERY);
+    const handleChange = (e) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
+  }, []);
 
   useEffect(() => {
     if (paused) return;
@@ -92,8 +109,8 @@ export default function CaseStudies() {
   return (
     <section id="work" className="bg-base">
       <div className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-4">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start">
+          <div className="min-w-0 lg:col-span-4">
             <h2 className="text-3xl font-bold tracking-tight text-contrast sm:text-4xl lg:text-5xl">
               Case Studies
             </h2>
@@ -133,19 +150,19 @@ export default function CaseStudies() {
           </div>
 
           <div
-            className="lg:col-span-8"
+            className="min-w-0 lg:col-span-8"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="overflow-hidden">
+            <div className="w-full overflow-hidden">
               <div
                 className="flex transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${index * 70}%)` }}
+                style={{ transform: `translateX(-${index * slideWidth}%)` }}
               >
                 {caseStudies.map((cs, i) => (
                   <div
                     key={cs.client}
-                    className="w-[70%] shrink-0 pr-6 sm:w-[68%] lg:w-[78%]"
+                    className="w-[92%] shrink-0 pr-6 md:w-[70%]"
                   >
                     <a
                       href={cs.href}
