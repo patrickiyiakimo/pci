@@ -11,9 +11,9 @@
   --color-base-v2: #f7f7f7;
   --color-contrast: #1f1e1e;
   --color-ink: #000000;
-  --color-accent: #da3750;
-  --color-accent-400: #ee6d80;
-  --color-accent-dark: #c22e45;
+  --color-accent: #16a34a;
+  --color-accent-400: #22c55e;
+  --color-accent-dark: #15803d;
   --color-grey-100: #edecEC;
   --color-grey-200: #e3e1e1;
   --color-grey-300: #c7c4c4;
@@ -57,11 +57,11 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #da3750;
+  background: #16a34a;
 }
 
 ::selection {
-  background: #da3750;
+  background: #16a34a;
   color: #ffffff;
 }
 

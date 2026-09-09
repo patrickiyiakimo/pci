@@ -8,7 +8,7 @@ export default function LetsTalk() {
         aria-hidden
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% 0%, #da3750 0%, transparent 55%)",
+            "radial-gradient(ellipse 80% 50% at 50% 0%, #16a34a 0%, transparent 55%)",
         }}
       />
       <div className="relative mx-auto max-w-4xl px-6 py-24 text-center">

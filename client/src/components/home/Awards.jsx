@@ -29,7 +29,7 @@ export default function Awards() {
         aria-hidden
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 100%, #da3750 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 100%, #16a34a 0%, transparent 70%)",
         }}
       />
       <div className="relative mx-auto max-w-7xl px-6 py-20">
