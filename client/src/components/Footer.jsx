@@ -41,9 +41,9 @@ const footerColumns = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/goji-labs/" },
-  { label: "X", href: "https://twitter.com" },
-  { label: "Instagram", href: "https://www.instagram.com/goji_labs" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/goji-labs/", hoverClass: "hover:text-[#0A66C2]" },
+  { label: "X", href: "https://twitter.com", hoverClass: "hover:text-[#000000]" },
+  { label: "Instagram", href: "https://www.instagram.com/goji_labs", hoverClass: "hover:text-[#E4405F]" },
 ];
 
 export default function Footer() {
@@ -63,7 +63,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-grey-200 text-grey-600 transition-colors hover:border-accent hover:text-accent"
+                  className={`flex h-10 w-10 items-center justify-center rounded-lg border border-grey-200 text-grey-600 transition-colors hover:border-grey-300 ${s.hoverClass}`}
                   aria-label={s.label}
                 >
                   {s.label === "LinkedIn" && (

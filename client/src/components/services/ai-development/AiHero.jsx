@@ -30,16 +30,16 @@ export default function AiHero() {
 
       <div className="relative mx-auto max-w-7xl px-6 pb-16">
         <div className="relative overflow-hidden rounded-3xl bg-ink">
-          <Image
+          {/* <Image
             src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80"
             alt="AI neural network visualization"
             width={1600}
             height={900}
             className="h-[320px] w-full object-cover opacity-70 sm:h-[420px] lg:h-[500px]"
             priority
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
-          <div className="absolute inset-0 grid-overlay opacity-30" />
+          /> */}
+          {/* <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" /> */}
+          {/* <div className="absolute inset-0 grid-overlay opacity-30" /> */}
 
           <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 lg:p-14">
             <div className="flex flex-wrap gap-3">

@@ -6,7 +6,7 @@ const services = [
     description:
       "We design and build AI assistants and conversational chatbot interfaces that automate workflows, support users, and integrate directly into your product and operations. These are not standalone chatbots. They are systems that complete tasks, access real data, and drive measurable outcomes.",
     image:
-      "https://images.unsplash.com/photo-1684163761184-48d4fc7b0006?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
     alt: "Conversational AI interface",
     href: "/services/ai-development",
   },
