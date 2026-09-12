@@ -6,7 +6,9 @@ const baseClasses =
 const variants = {
   primary: "bg-accent text-white hover:bg-accent-dark",
   dark: "bg-ink text-white hover:bg-contrast",
+  white: "bg-white text-accent-dark hover:bg-ice",
   outline: "border border-contrast/20 text-contrast hover:border-accent hover:text-accent",
+  "outline-light": "border border-white/40 text-white hover:border-white hover:bg-white/10",
   ghost: "text-contrast hover:text-accent",
 };
 
