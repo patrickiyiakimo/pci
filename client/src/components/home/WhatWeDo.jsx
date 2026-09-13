@@ -49,7 +49,7 @@ export default function WhatWeDo() {
             <a
               key={service.title}
               href={service.href}
-              className="group overflow-hidden rounded-2xl border border-grey-200 bg-base-v2 p-6 transition-colors hover:border-accent/40"
+              className="group overflow-hidden p-6 transition-colors hover:border-accent/40"
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-xl font-bold tracking-tight text-contrast sm:text-2xl">
