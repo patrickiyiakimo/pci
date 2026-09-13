@@ -49,16 +49,16 @@ const testimonials = [
 
 function Card({ t }) {
   return (
-    <figure className="flex h-full flex-col rounded-2xl border border-grey-200 bg-white p-6">
+    <figure className="flex h-full flex-col border border-grey-200 bg-white p-6">
       <span
         className="flex gap-1 text-accent"
         aria-label={`${t.author} rated 5 stars`}
       >
-        {Array.from({ length: 5 }, (_, i) => (
+        {/* {Array.from({ length: 5 }, (_, i) => (
           <svg key={i} viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
             <path d="M20 2l2 11 4 10 3 14" />
           </svg>
-        ))}
+        ))} */}
       </span>
       <blockquote className="mt-4 text-base leading-relaxed text-contrast">
         &ldquo;{t.quote}&rdquo;
@@ -96,9 +96,6 @@ export default function Testimonials() {
           <h2 className="text-3xl font-bold tracking-tight text-contrast sm:text-4xl lg:text-5xl">
             What Our Partners Are Saying:
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-grey-600">
-            Rated 5.0 out of 5 from 84 reviews on Clutch.
-          </p>
         </div>
 
         <div className="mt-12 hidden md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
