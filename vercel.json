@@ -2,13 +2,7 @@
   "services": {
     "client": {
       "root": "client",
-      "framework": "vite",
-      "rewrites": [
-        {
-          "source": "/(.*)",
-          "destination": "/index.html"
-        }
-      ]
+      "framework": "nextjs"
     },
     "server": {
       "root": "server",
